@@ -1,0 +1,42 @@
+[
+  {
+    "CollegeName": "PES University",
+    "ref": "../PESCollegePage/mainPage.html"
+  },
+  {
+    "CollegeName": "RVCE",
+    "ref": "../RVCollegePage/mainPage.html"
+  },
+  {
+    "CollegeName": "BMSCE",
+    "ref": "1foo.html"
+  },
+  {
+    "CollegeName": "MSRIT",
+    "ref": "../MSRCollegePage/mainPage.html"
+  },
+  {
+    "CollegeName": "BMSIT",
+    "ref": "1foo.html"
+  },
+  {
+    "CollegeName": "MVIT",
+    "ref": "1foo.html"
+  },
+  {
+    "CollegeName": "Dayanad Sagar College Of Engg",
+    "ref": "1foo.html"
+  },
+  {
+    "CollegeName": "SVCE",
+    "ref": "1foo.html"
+  },
+  {
+    "CollegeName": "RNSIT",
+    "ref": "1foo.html"
+  },
+  {
+    "CollegeName": "NMIT",
+    "ref": "1foo.html"
+  }
+]

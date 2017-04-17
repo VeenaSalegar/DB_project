@@ -1,0 +1,244 @@
+<html ng-app="countryApp">
+	<head>
+		<meta charset="utf-8">		
+		<meta charset="utf-8">		
+		<link href="../CssAndScripts/bootstrap/css/bootstrap.css" rel="stylesheet" />
+		<link href="../CssAndScripts/style.css" rel="stylesheet" />
+		<link href="../CssAndScripts/font-awesome-4.4.0/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="../CssAndScripts/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+		<script src="../CssAndScripts/scripts/jquery-1.7.1.min.js"></script>
+		<script src="../CssAndScripts/bootstrap/js/bootstrap.js"></script>				
+		<script src="../CssAndScripts/angular.min.js"></script>		
+		
+	<style>
+		html
+			{ 
+				background: url(bg1.jpg) no-repeat center center fixed; 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+			}
+		
+		div.background {
+			background: url(bgimg2.jpg) repeat;
+			border: 2px solid black;
+		}
+
+		div.transbox {
+			margin: 30px;
+			background-color: #ffffff;
+			border: 2px solid black;
+			opacity: 0.8;
+			filter: alpha(opacity=60); 
+		}
+
+		div.transbox p {
+			margin: 5%;
+			font-weight: bold;
+			color: #000000;
+		}
+	</style>
+	<script>
+			var countryApp = angular.module('countryApp', []);
+			countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http){
+			http.get('../MainPage/cols.json').success(function(data) {
+				scope.countries = data;
+				});
+			}]);
+		</script>
+	</head>
+	<body>
+		<script>
+		function offlineList()
+		{
+			var a=document.getElementById("offlineList");
+			a.innerHTML='<tr><td><a href="../PesCollegePage/mainPage.html">PESU</a></td></tr><br>\
+								<tr><td><a href="../MSRCollegePage/mainPage.html">MSR</a></td></tr><br>\
+								<tr><td><a href="../RVCollegePage/mainPage.html">RV</a></td></tr><br>\
+								<tr><td><a>BMSCE</a></td></tr>';
+		}
+	</script>
+	 <div class="modal fade" id="LoginModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="h4style"><h2><i class="fa fa-lock "></i>  Login</h2></div>
+				</div>
+				<div class="modal-body" style="padding:40px 50px;">
+					<form role="form">
+						<div class="form-group">
+							<label for="usrname"><i class="icon-user"></i> Username</label>
+							<input type="text" class="form-control" id="usrname" placeholder="Enter email">
+						</div>
+						<div class="form-group">
+							<label for="psw"><i class="icon-eye-open"></i>   Password</label>
+							<input type="text" class="form-control" id="psw" placeholder="Enter password">
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" value="" checked>Remember me</label>
+						</div>
+						<button type="submit" class="btn btn-success btn-block" onclick="editNavBar()"><i class="fa fa-leaf"></i> Login</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+					<p>Not a member? <a href="#">Sign Up</a></p>
+					<p>Forgot <a href="#">Password?</a></p>
+				</div>
+			</div>
+		</div>
+	</div>  
+	<div class="container" ng-controller="CountryCtrl">  
+			<div class="container">  
+			<div class="modal fade" id="SearchModal" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Find Your College Here</h4>
+						</div>
+						<div class="modal-body">							
+							Search:<input ng-model="query" type="text"/>
+							<table>
+								<tr><td><button onclick="offlineList()">Offline list</button><br>i.e. not using Local host</td></tr>
+								<div id="offlineList"></div>								
+								<tr ng-repeat="country in countries | filter:query">
+									<td><a ng-href="{{country.ref}}">{{country.CollegeName}}</a></td>									
+								</tr>
+							</table>							
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>      
+				</div>
+			</div>  
+		</div>
+		</div>
+
+			<nav class="nav navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner navspy">
+           
+            <ul class="nav">
+                <li><a href="../index.html" style="color:white"><i class="fa fa-home fa-fw"></i>Home</a></a></li>
+                <li><a href="#" data-toggle="modal" data-target="#SearchModal" style="color:white"> <i class="fa fa-search fa-fw"></i>Search College</a></li>                
+                <li><a href="#" data-toggle="modal" data-target="#LoginModal" style="color:white"><i class="fa fa-globe fa-fw"></i>Login</a></li>    
+				<li><a href="../EventsPage/EventGridPage.html" style="color:white"><i class="fa fa-info-circle fa-fw"></i>Events</a></li>                
+				<li><a href="../MainPage/reg.html" style="color:white"><i class="fa fa-info-circle fa-fw"></i>About Us</a></li>                
+				
+				<li></li>
+				<li></li>
+            </ul>
+			<div class="navbar-search pull-right input-append">			
+				<span><a href="../MainPage/reg.html" style="color:white"><i class="fa fa-info-circle fa-fw"></i>About Us</a> </span>
+				<span class="paddingRight">
+				<button type="button" class="btn btn-danger" align="right">College</button>
+				<button type="button" class="btn btn-success paddingRight" align="left" style="padding-right:20px">Hub</button>
+		       </span>
+                  <img src="../logo.gif" alt="blah" width="50" class="roundBorder"/>
+             </div>
+        </div>
+    </nav>		<br>
+		<script>
+		
+		function focus(x)
+		{
+			x.style.borderColor="blue";
+		}
+			function change(a)
+			{
+				var b=document.getElementById("hi");
+				if(a=='Event')
+				{					
+					console.log("event");
+					b.innerHTML='<fieldset>\
+                        <center><h3>To get started, provide us with the following information:</h3></center>\
+                        <label for="UserInfo_Email">Email:</label>						<input id="UserInfo_Email" name="UserInfo.Email" type="text" value="" onfocus="focus(this)"><br><br>\
+                        <label for="UserInfo_FirstName">First name:</label>                        <input id="UserInfo_FirstName" name="UserInfo.FirstName" type="text" value=""><br><br>\
+                        <label for="UserInfo_LastName">Last name:</label>\
+                        <input id="UserInfo_LastName" name="UserInfo.LastName" type="text" value=""><br><br><label for="UserInfo_Company">Branch:</label>\
+                        <input id="UserInfo_Company" name="UserInfo.Company" type="text" value=""><br><br>\
+                        <label for="UserInfo_HowHeard">How did you hear about this event?</label><br>\
+                        <select id="UserInfo_HowHeard_SelectedValue" name="UserInfo.HowHeard.SelectedValue">\
+                            <option>Blogs</option>\
+                            <option>Friends</option>\
+                            <option>Posters</option>\
+                            <option>Trade Show</option>\
+                            <option>Search Engine</option>\
+                            <option>Social Community</option>\
+                            <option>User Group</option>\
+                        </select><br><br><br>                                               <label for="describe">Describe your interest:</label><br>\
+                        <textarea class="input-block-level" id="describe" rows="3"></textarea><br><br><br>\
+                        <input type="submit" value="Sign Up!" class="btn btn-primary" />\
+                    </fieldset>';
+				}
+				
+				else
+				{
+					b.innerHTML='<fieldset>\
+                        <center><h3>To get started, provide us with the following information:</h3></center>\
+                        <label for="UserInfo_Email">college name:</label>						<input id="UserInfo_Email" name="UserInfo.Email" type="text" value="" onfocus="focus(this)"><br><br>\
+                        <label for="UserInfo_FirstName"> Branch name:</label>                        <input id="UserInfo_FirstName" name="UserInfo.FirstName" type="text" value=""><br><br>\
+                        <input id="UserInfo_LastName" name="UserInfo.LastName" type="text" value=""><br><br><label for="UserInfo_Company">Branch:</label>\
+                        <input id="UserInfo_Company" name="UserInfo.Company" type="text" value=""><br><br>\
+                        <label for="UserInfo_HowHeard">How did you hear about this event?</label><br>\
+                        <select id="UserInfo_HowHeard_SelectedValue" name="UserInfo.HowHeard.SelectedValue">\
+                            <option>Blogs</option>\
+                            <option>Friends</option>\
+                            <option>Posters</option>\
+                            <option>Trade Show</option>\
+                            <option>Search Engine</option>\
+                            <option>Social Community</option>\
+                            <option>User Group</option>\
+                        </select><br><br><br>                                               <label for="describe">Describe your interest:</label><br>\
+                        <textarea class="input-block-level" id="describe" rows="3"></textarea><br><br><br>\
+                        <input type="submit" value="Sign Up!" class="btn btn-primary" />\
+                    </fieldset>';
+				}
+			}
+		</script>
+		
+	<div class="span6 offset3">
+	<div class="background">
+	<div class="transbox">
+		<br><br><br>
+		<input type="button" value="reg event" onclick="change('Event')" class="btn btn-primary" autofocus>
+		<input type="button" value="reg col" onclick="change('col')" class="btn btn-primary"><br><br>		
+		<div>
+		
+		<form action="/signup" method="post"  id="hi">
+                    <fieldset>
+                        <center><h3>To get started, provide us with the following information:</h3></center>
+                        <label for="UserInfo_Email">Email:</label>
+                        <input id="UserInfo_Email" name="UserInfo.Email" type="text" value="" onfocus="focus(this)"><br><br>
+                        <label for="UserInfo_FirstName">First name:</label>
+                        <input id="UserInfo_FirstName" name="UserInfo.FirstName" type="text" value=""><br><br>
+                        <label for="UserInfo_LastName">Last name:</label>
+                        <input id="UserInfo_LastName" name="UserInfo.LastName" type="text" value=""><br><br>
+                        <label for="UserInfo_Company">Branch:</label>
+                        <input id="UserInfo_Company" name="UserInfo.Company" type="text" value=""><br><br>
+                        <label for="UserInfo_HowHeard">How did you hear about this event?</label><br>
+                        <select id="UserInfo_HowHeard_SelectedValue" name="UserInfo.HowHeard.SelectedValue">
+                            <option>Blogs</option>
+                            <option>Friends</option>
+                            <option>Posters</option>
+                            <option>Trade Show</option>
+                            <option>Search Engine</option>
+                            <option>Social Community</option>
+                            <option>User Group</option>
+                        </select><br><br><br>
+                        
+                        <label for="describe">Describe your interest:</label><br>
+                        <textarea class="input-block-level" id="describe" rows="3"></textarea><br><br><br>
+                        <input type="submit" value="Sign Up!" class="btn btn-primary" />
+                    </fieldset>
+                </form>
+				
+				</div>
+	</div>
+	</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,416 @@
+<html ng-app="countryApp">
+	<head>
+		<title>Col-Hub.com</title>
+		<meta charset="utf-8">		
+		<link href="../CssAndScripts/bootstrap/css/bootstrap.css" rel="stylesheet" />
+		<link href="../CssAndScripts/style.css" rel="stylesheet" />
+		<link href="../CssAndScripts/font-awesome-4.4.0/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="../CssAndScripts/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+		<script src="../CssAndScripts/scripts/jquery-1.7.1.min.js"></script>
+		<script src="../CssAndScripts/bootstrap/js/bootstrap.js"></script>				
+		<script src="../CssAndScripts/angular.min.js"></script>		
+		<style>
+		.divLightBlueColor2{background-color:#35aadc; }
+		.divBlack{background-color:#5b5959;}
+		.divGrey{background-color:#A0A0A0 ;}
+		.divGreen{background-color:#5cb85c}
+		.color16{background-color:white;}
+		.roundBorder{border-radius: 25px;}
+		.height3{height:790;}
+		.padding1{ padding-top: 5px; padding-right: 25px;   padding-bottom: 10px;   padding-left: 25px;}
+		.padding2{background-color:#5b5959; padding-top: 1px; padding-right: 1px;   padding-bottom: 1px;   padding-left: 1px;}
+		.padding3{background-color:#e83a56; padding-top: 5px; padding-right: 25px;   padding-bottom: 10px;   padding-left: 25px;}
+		.padding4{ padding-top: 5px; padding-right: 25px;   padding-bottom: 10px;   padding-left: 25px;}
+		.border1{background-color:#5b5959;border: 2px solid #FFFFFF;}
+		.width1{width:100px;}
+		.floatR{float:right;}
+		.indent{text-indent:50px;}
+		.width2{width:auto;}
+		.width3{width:200;}
+		.width4{width:320;}
+		.width5{width:180;}
+		.height1{height:70;}
+		.paddingRight{padding-right:25px;}
+		.override{text-decoration:underline !important;}
+		.height2{height:450;}
+		div.relative {position: relative; left: 40px; right:10px;}
+		relative1 {position: relative; left: 40px; right:10px;}
+		relative2 {position: relative; left: 40px; right:100px;}
+		.relative1{position: relative; left: 270px;right:10px; top:10px;}		
+		.absolute1{position: absolute;    top: 80px;    right: 0;    width: 200px;    height: 100px;}		
+		div.padding{padding-top: 5px; padding-right: 25px;   padding-bottom: 10px;   padding-left: 25px;}
+		.heading {   position: relative;  display: block;    background:lightblue;      margin: 0 0 45px;}									
+		.modal-header, .h4style ,.close {background-color: #5cb85c;     color:white !important;      text-align: center;      font-size: 30px;  }
+		.modal-footer {      background-color: #f9f9f9;  }
+		.img-radius{border-radius:50%;}
+		.divOverflow{overflow-y:scroll;}
+		.table-striped tbody tr:nth-child(odd) td,
+		.table-striped tbody tr:nth-child(odd) th {background-color: #C0C0C0;}
+		.container1 {position: relative;}
+		.tag2 {   float: left;   position: absolute;   left: 10px;   top: 50px;   z-index: 1000;   background-color: black;   padding: 5px;   color: #FFFFFF; font-weight: bold;   opacity: 0.8;    filter: alpha(opacity=40);}
+		.tag1 {   float: left;   position: absolute;   left: 10px;   top: 380px;   z-index: 1000;   background-color: black;   padding: 5px;   color: #FFFFFF; font-weight: bold;   opacity: 0.8;    filter: alpha(opacity=40);}
+		.tag3 {   float: right;   position: absolute;   left: 1040px;   top: 45px;   z-index: 1000;   background-color: black;   padding: 5px;   color: #FFFFFF; font-weight: bold;   opacity: 0.8;    filter: alpha(opacity=40);}
+		.tag5 {   float: left;   position: absolute;   left: 10px;   top: 200px;   z-index: 1000;   background-color: black;   padding: 5px;   color: #FFFFFF; font-weight: bold;   opacity: 0.8;    filter: alpha(opacity=40);}
+		</style>	
+		<script>
+			var countryApp = angular.module('countryApp', []);
+			countryApp.controller('CountryCtrl', ['$scope', '$http', function (scope, http){
+			http.get('cols.json').success(function(data) {
+				scope.countries = data;
+				});
+			}]);
+		</script>
+		<script>
+			var info=["<h1><span style='color:white;font-size:40'>What Time Is the Event!!?!</span></h1>" , "<h1><span style='color:white;font-size:40' align='left'>Where Do I Register?!?</span></h1>" , "<h1><span style='color:white;font-size:40'>Need Info About A College!</span></h1>" , "<h1><span style='color:white;font-size:40'>This Is The Right Stop</span></h1>" , "<h1><span style='color:white;font-size:40'>Whats Happening?!?</span></h1>"]
+			var divcolor=["#ff9800" , "#5cb85c" , "#5b5959"]
+			var stop;
+			function ques()
+			{
+				stop=setInterval("quesChange()" , 1000);
+			}
+			var a;
+			var i=0;
+			var j=0;
+			function quesChange()
+			{
+				a=document.getElementById("questions");
+				a.style.backgroundColor=divcolor[j%3];
+				a.innerHTML+=info[i%5]+"<br>";
+				console.log(i%5)
+				if(i%5==4)
+				{
+					a.style.backgroundColor="#d9534f";
+					a.innerHTML="<br><h1><span style='color:white;font-size:40'>Whats Happening?!?<br></span></h1><br>";
+				}
+				i=i+1;
+				j=j+1;
+				console.log(i);
+				if(i==9)
+				{
+					clearInterval(stop);
+					a.style.backgroundColor="#d9534f";
+				}
+			}
+		</script>
+	</head>
+	<body onload="ques()">				
+	<script>
+		function offlineList()
+		{
+			var a=document.getElementById("offlineList");
+			a.innerHTML='<tr><td><a href="../PesCollegePage/mainPage.html">PESU</a></td></tr><br>\
+								<tr><td><a href="../MSRCollegePage/mainPage.html">MSR</a></td></tr><br>\
+								<tr><td><a href="../RVCollegePage/mainPage.html">RV</a></td></tr><br>\
+								<tr><td><a>BMSCE</a></td></tr>';
+		}
+	</script>
+	 <div class="modal fade" id="LoginModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="h4style"><h2><i class="fa fa-lock "></i>  Login</h2></div>
+				</div>
+				<div class="modal-body" style="padding:40px 50px;">
+					<form role="form">
+						<div class="form-group">
+							<label for="usrname"><i class="icon-user"></i> Username</label>
+							<input type="text" class="form-control" id="usrname" placeholder="Enter email">
+						</div>
+						<div class="form-group">
+							<label for="psw"><i class="icon-eye-open"></i>   Password</label>
+							<input type="text" class="form-control" id="psw" placeholder="Enter password">
+						</div>
+						<div class="checkbox">
+							<label><input type="checkbox" value="" checked>Remember me</label>
+						</div>
+						<button type="submit" class="btn btn-success btn-block" onclick="editNavBar()"><i class="fa fa-leaf"></i> Login</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+					<p>Not a member? <a href="#">Sign Up</a></p>
+					<p>Forgot <a href="#">Password?</a></p>
+				</div>
+			</div>
+		</div>
+	</div>  
+	<div class="container" ng-controller="CountryCtrl">  
+			<div class="container">  
+			<div class="modal fade" id="SearchModal" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Find Your College Here</h4>
+						</div>
+						<div class="modal-body">							
+							Search:<input ng-model="query" type="text"/>
+							<table>
+								<tr><td><button onclick="offlineList()">Offline list</button><br>i.e. not using Local host</td></tr>
+								<div id="offlineList"></div>								
+								<tr ng-repeat="country in countries | filter:query">
+									<td><a ng-href="{{country.ref}}">{{country.CollegeName}}</a></td>									
+								</tr>
+							</table>							
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>      
+				</div>
+			</div>  
+		</div>
+		</div>
+
+			<nav class="nav navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner navspy">
+           
+            <ul class="nav">
+                <li><a href="../index.html" style="color:white"><i class="fa fa-home fa-fw"></i>Home</a></a></li>
+                <li><a href="collegelist.php"  style="color:white"> <i class="fa fa-search fa-fw"></i>Search College</a></li>                
+                <li><a href="#" data-toggle="modal" data-target="#LoginModal" style="color:white"><i class="fa fa-globe fa-fw"></i>Login</a></li>    
+				<li><a href="../EventsPage/EventGridPage.html" style="color:white"><i class="fa fa-info-circle fa-fw"></i>Events</a></li>                
+				<li><a href="../MainPage/aboutus.html" style="color:white"><i class="fa fa-info-circle fa-fw"></i>About Us</a></li>                
+            </ul>
+			<div class="navbar-search pull-right input-append">			
+				<span><a href="../MainPage/reg.html" style="color:white"><i class="fa fa-info-circle fa-fw"></i>About Us</a> </span>
+				<span class="paddingRight">
+				<button type="button" class="btn btn-danger" align="right">College</button>
+				<button type="button" class="btn btn-success paddingRight" align="left" style="padding-right:20px">Hub</button>
+		       </span>
+                  <img src="../logo.gif" alt="blah" width="50" class="roundBorder"/>
+             </div>
+        </div>
+    </nav>		<br>
+		<div style="width:100% ; height: 400px ; background-color:#d9534f" id="questions" align="center" class="container1">			<br>
+			<h1 style="font-size:40;color:white" align="center">Whats Happening?!?<br><br></h1>				
+		</div>
+		<div class="tag2"><a href="#" style="color:white"><i class="fa fa-arrow-circle-up"> </i> Search for your college here</a></div>
+		<div class="tag5"><a href="../MainPage/reg.html" style="color:white"><button class="btn btn-primary">Register With Us</button></a></div>
+		<div class="tag1"><a href="#events" style="color:white"><i class="fa fa-arrow-circle-down"></i> Search for your events here</a></div>
+		<div class="tag3 divOverflow color16 height3 span3 " >
+						<table class="table-striped" align="center" style="color:white">
+							
+							<tr><td><div  align="center"><br>Events And New From Around The World<br><br></div><br></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">Major Tech Event In Moscow<br><br></div></td></tr>
+							<tr><td><div  align="center">An Invention that will Redefine Everything<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+							<tr><td><div  align="center">SomeBody Won Some Game In Some Country<br><br></div></td></tr>
+						</table>
+						</table>
+				</div>
+		<script>
+			function foo1(a)
+			{
+				console.log("in foo");
+				var b=document.getElementById("date1");
+				var c=document.getElementById("date2");
+				var d=document.getElementById("date3");				
+				var i1=document.getElementById("img1");				
+				var i2=document.getElementById("img2");				
+				var i3=document.getElementById("img3");				
+				var i4=document.getElementById("img4");				
+				var info1=document.getElementById("info1");
+				var info2=document.getElementById("info2");
+				var info3=document.getElementById("info3");
+				var info4=document.getElementById("info4");
+				if(a.charAt(4)=="1")
+				{
+					b.innerHTML="<h3 style='color:white'>28th May</h3>";					
+					b.className="border1 padding2 roundBorder relative width3";
+					i1.src="images/samarpana/covers.jpg";
+					i2.src="images/aatmatrisha/covers.jpg";
+					i3.src="images/epsilon/cover.jpg";
+					i4.src="images/utsav/cover.jpg";
+					info1.innerHTML='Samarpana Bake Sale <br><span style="font-size:14px" align="center">Venue:OAT PESU</span><br><span style="font-size:14px" align="center">Timings:10:15-10:45AM <br>  12:45-1:30PM</span>';
+					info2.innerHTML='Samarpana Bake Sale <br><span style="font-size:14px" align="center">Venue:OAT PESU</span><br><span style="font-size:14px" align="center">Timings:10:15-10:45AM <br>  12:45-1:30PM</span>';
+					info3.innerHTML='Samarpana Bake Sale <br><span style="font-size:14px" align="center">Venue:OAT PESU</span><br><span style="font-size:14px" align="center">Timings:10:15-10:45AM <br>  12:45-1:30PM</span>';
+					info4.innerHTML='Samarpana Bake Sale <br><span style="font-size:14px" align="center">Venue:OAT PESU</span><br><span style="font-size:14px" align="center">Timings:10:15-10:45AM <br>  12:45-1:30PM</span>';
+					c.innerHTML="<h3 style='color:white'>29th May</div></h3>";
+					c.className="relative";
+					d.innerHTML="<h3 style='color:white'>30th May</div></h3>";
+					d.className="relative";
+				}
+				if(a.charAt(4)=="2")
+				{
+					b.innerHTML="<h3 style='color:white'>28th May</div></h3>";
+					b.className="relative";
+					i1.src="images/eclat.jpg";
+					i2.src="images/eclat.jpg";
+					i3.src="images/eclat.jpg";
+					i4.src="images/eclat.jpg";
+					info1.innerHTML='   Hack-a-thon   <br><span style="font-size:14px" align="center">Venue:MRD PESU</span><br><span style="font-size:14px" align="center">Timings:9AM Sat <br> 9AM Sun</span>';
+					info2.innerHTML='Hack-a-thon <br><span style="font-size:14px" align="center">Venue:MRD PESU</span><br><span style="font-size:14px" align="center">Timings:9AM Sat <br> 9AM Sun</span>';
+					info3.innerHTML='Hack-a-thon <br><span style="font-size:14px" align="center">Venue:MRD PESU</span><br><span style="font-size:14px" align="center">Timings:9AM Sat <br> 9AM Sun</span>';
+					info4.innerHTML='Hack-a-thon <br><span style="font-size:14px" align="center">Venue:MRD PESU</span><br><span style="font-size:14px" align="center">Timings:9AM Sat <br> 9AM Sun</span>';
+					c.innerHTML="<h3 style='color:white'>29th May</h3>";
+					c.className="border1 padding2 roundBorder relative width3";
+					d.innerHTML="<h3 style='color:white'>30th May</div></h3>";
+					d.className="relative";
+				}
+				if(a.charAt(4)=="3")
+				{
+					console.log("clicked3");
+					i1.src="images/pesu.jpg";
+					i2.src="images/pesu.jpg";
+					i3.src="images/pesu.jpg";
+					i4.src="images/pesu.jpg";
+					info1.innerHTML='   Yamini   <br><span style="font-size:14px" align="center">Venue:MRD PESU</span><br><span style="font-size:14px" align="center">Timings:9AM Sat <br> 9AM Sun</span>';
+					info2.innerHTML='Yamini <br><span style="font-size:14px" align="center">Venue:MRD PESU</span><br><span style="font-size:14px" align="center">Timings:9AM Sat <br> 9AM Sun</span>';
+					info3.innerHTML='Yamini <br><span style="font-size:14px" align="center">Venue:MRD PESU</span><br><span style="font-size:14px" align="center">Timings:9AM Sat <br> 9AM Sun</span>';
+					info4.innerHTML='Yamini <br><span style="font-size:14px" align="center">Venue:MRD PESU</span><br><span style="font-size:14px" align="center">Timings:9AM Sat <br> 9AM Sun</span>';
+					b.innerHTML="<h3 style='color:white'>28th May</h3>";
+					b.className="relative";
+					c.innerHTML="<h3 style='color:white'>29th May</div></h3>";
+					c.className="relative";
+					d.innerHTML="<h3 style='color:white'>30th May</div></h3>";
+					d.className="";
+					d.className="border1 padding2 roundBorder relative width3";
+				}
+				
+			}
+			
+		</script>
+		<span id="events"></span>
+		<div  class="divLightBlueColor2 height2" >	<br><br>
+			<div class="row">
+				<img src="images/eventsIcon.png" width="10" class="span1 offset2 roundBorder"/>
+				<h1 style="color:white" class="span3 offset1">Upcoming Events</h1>
+				
+			</div><br>
+			<hr/>
+			<div class="row">
+				<table class="span1" style="float:left; margin-left:-10">
+			   <tr><td><div class=" width3 relative " align="center" id="date1" onclick="foo1('date1')"><h3 style="color:white" class="border1 padding4 roundBorder">28th May</h3></div></td></tr>
+			   <tr><td><br></td></tr>
+			   <tr><td><div class=" width1 relative padding1" align="center" onclick="foo1('date2')" id="date2" ><h3 style="color:white">29th May</h3></div></td></tr>
+			   <tr><td><br></td></tr>
+			   <tr><td><div class="width1 relative  padding1" align="center" id="date3" onclick="foo1('date3')" ><h3 style="color:white">30th May</h3></div></td></tr>
+			   <tr><td><br></td></tr>
+			   </table>
+			   <div class="span3 offset1">
+					<div class="row width4" style="padding-left:-50">
+						<a href="../EventsPage/bakesale.html"><img id="img1" src="images/samarpana/covers.jpg" width="85"/><div class="divBlack floatR height1 padding width5 " align="center" style="font-size:20px; color:white"><span id="info1">Samarpana Bake Sale <br><span style="font-size:14px" align="center">Venue:Students Launge PESU</span><br><span style="font-size:14px" align="center">Timings:10:15-10:45AM </span></span></div></a> <br><br><br><br>
+						<a href="../EventsPage/aatmatrisha.html"><img id="img2" src="images/aatmatrisha/covers.jpg" width="85"/><div class="divBlack floatR height1 padding width5 " align="center" style="font-size:20px; color:white"><span id="info2">Aatmatrisha Sunidhi Chauhan <br><span style="font-size:14px" align="center">Venue:Tech Park PESU</span><br><span style="font-size:14px" align="center">Timings:6PM Onwards </span></span></div></a>
+					</div> 
+			   </div>
+			   <div class="span3 offset1 ">
+					<div class="row width4">
+						<a href="../EventsPage/epsilon.html"><img id="img3" src="images/epsilon/cover.jpg" width="85"/><div class="divBlack floatR height1 padding width5 " align="center" style="font-size:20px; color:white"><span id="info3">Epsilon-Science fest <br><span style="font-size:14px" align="center">Venue:OAT PESU</span><br><span style="font-size:14px" align="center">Timings:10:15-10:45AM <br> 12:45-1:30PM</span></span></div></a> <br><br><br><br>
+						<a href="../EventsPage/utsav.html"><img id="img4" src="images/utsav/cover.jpg" width="85"/><div class="divBlack floatR height1 padding width5" align="center" style="font-size:20px; color:white"><span id="info4">UTSAV<br><span style="font-size:14px" align="center">Venue:BMSCE</span><br><span style="font-size:14px" align="center">Timings:8AM to 8PM</span></span></div></a>
+					</div> 
+			   </div>							
+					
+			 </div>
+			 <br>
+		</div>
+		<div class="row divGreen"><br>
+			<div align="center" style="color:white; font-size:30">Other Events<br><br><hr/></div>
+			<div class="span3">
+			<div><h2 style="color:white">Sort Events By</h2></div>
+			<table style="color:white">				
+				<tr><td><br></td><td><br></td></tr>
+				<tr>					
+					<td><img src="images/collage1.jpg" class="roundBorder" width="100"/></td>
+					<td><h3> <span onmouseover="showlist()">College</span></h3></td>
+					<span id="hey"></span>
+				</tr>
+				<tr>
+					<td>PESU Events</td>
+				</tr>
+				<tr>
+					<td>BMSCE Events</td>
+				</tr>
+				<tr>
+					<td>Show More</td>
+				</tr>
+				<tr>					
+					<td><img src="images/collage1.jpg" class="roundBorder" width="100"/></td>
+					<td><h3> Tech Events</h3></td>
+				</tr>
+				
+				<tr><td><br></td><td><br></td></tr>
+				<tr>					
+					<td><img src="images/collage1.jpg" class="roundBorder" width="100"/></td>
+					<td><h3> Quiz Events</h3></td>
+				</tr>
+				<tr><td><br></td><td><br></td></tr>
+				<tr>					
+					<td><img src="images/collage1.jpg" class="roundBorder" width="100"/></td>
+					<td><h3> Cultural Events</h3></td>
+				</tr>
+				<tr><td><br></td><td><br></td></tr>
+				<tr>					
+					<td><img src="images/collage1.jpg" class="roundBorder" width="100"/></td>
+					<td><h3> Social Cause</h3></td>
+				</tr>
+			</table>
+			</div>
+			<script>
+				function bigImg(a , b)
+				{
+					b.style.width=a+10;
+				}
+				function smallImg(a , b)
+				{
+					b.style.width=a;
+				}
+			</script>
+			<div class="span8">				
+				<div class=" height2 divOverflow" id="testDiv">
+					<div>
+					<a href="../EventsPage/utsav.html"><div style="width:210 ; border: 1px solid black; padding-left:10;padding-top:10; padding-bottom:10"><br><img src="images/cover.jpg" width="200" onmouseover="bigImg(200 , this)" onmouseout="smallImg(200 , this)" id="poster1"><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div><br> </div>  </a>
+					<a href="../EventsPage/epsilon.html"><div style="width:210 ; border: 1px solid black; padding-left:10; margin-top:-300; padding-top:20; padding-bottom:10" class="relative1"><img src="images/cover1.jpg" onmouseover="bigImg(200 , this)" onmouseout="smallImg(20	0 , this)" id="poster2" width="200" ><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div> </div>  </a>
+					<a href="../EventsPage/epsilon.html"><div style="width:210 ; border: 1px solid black; padding-left:10; margin-top:-280;padding-top:20; padding-bottom:10;margin-right:10" class="floatR"><img src="images/cover1.jpg" onmouseover="bigImg(200 , this)" onmouseout="smallImg(200 , this)" id="poster3"  width="200"><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div> </div>  </a>
+					</div>
+					<br><br>
+					<div>
+					<a href="../EventsPage/aatmatrisha.html"><div style="width:210 ; border: 1px solid black; padding-left:10;padding-top:10; padding-bottom:10"><img src="images/cover2.jpg" width="200" onmouseover="bigImg(200 , this)" onmouseout="smallImg(200 , this)" id="poster1"><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div> </div>  </a>
+					<a href="../EventsPage/epsilon.html"><div style="width:210 ; border: 1px solid black; padding-left:10; padding-right:10; margin-top:-280; padding-top:20; padding-bottom:10" class="relative1"><img src="images/cover1.jpg" onmouseover="bigImg(200 , this)" onmouseout="smallImg(20	0 , this)" id="poster2" width="300"><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div> </div>  </a>
+					<a href="../EventsPage/aatmatrisha.html"><div style="width:210 ; border: 1px solid black; padding-left:10; padding-right:10; margin-top:-290;margin-right:10;padding-top:20; padding-bottom:10" class="floatR"><img src="images/cover2.jpg" onmouseover="bigImg(200 , this)" onmouseout="smallImg(200 , this)" id="poster3"  width="300"><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div> </div>  </a>
+					</div>
+					<br><br>
+					<div>
+					<div style="width:210 ; border: 1px solid black; padding-left:10;padding-top:10; padding-bottom:10"><img src="images/cover.jpg" width="200" onmouseover="bigImg(200 , this)" onmouseout="smallImg(200 , this)" id="poster1"><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div> </div>  
+					<div style="width:210 ; border: 1px solid black; padding-left:10; margin-top:-280; padding-top:20; padding-bottom:10" class="relative1"><img src="images/cover.jpg" onmouseover="bigImg(200 , this)" onmouseout="smallImg(20	0 , this)" id="poster2" width="300"><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div> </div>  
+					<div style="width:210 ; border: 1px solid black; padding-left:10; margin-top:-260;padding-top:20; padding-bottom:10" class="floatR"><img src="images/cover.jpg" onmouseover="bigImg(200 , this)" onmouseout="smallImg(200 , this)" id="poster3"  width="300"><br><br> <div style="width:200; background-color:lightblue ; color:white; height:100">edadef</div> </div>  
+					</div>
+				</div>
+			</div>
+			<div class="span2">
+				<br><br>
+				<img src="images/snapdealads.gif" style="border:2px solid black"/><br><br><br>
+				<img src="images/amazonads.jpg" style="border:2px solid black"/><br><br><br>
+				<img src="images/snapdealads.gif" style="border:2px solid black"/>
+			</div>
+			
+			<script>
+				/*$(function()
+				{
+					$('#inner-content-div').jquery.slimScroll(
+					{
+					height: '250px'
+					});
+				});*/
+				// $("#inner-content-div").slimScroll();
+			//	(function($) {
+    //$("#inner-content-div").slimScroll();
+//})(jQuery);
+			$('#testDiv').slimscroll();
+			</script>
+		</div><br><br>
+		<div class="row">
+		<div class="span3"></div>
+		<div align="center" class="span7"><img src="images/big-university-feature.png"/></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<div style="width:100%;height:50" class="divBlack"><br><button style="margin-left:200" class="btn btn-primary">  About Us</button>	</div>
+	</body>
+</html>

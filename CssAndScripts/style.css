@@ -1,0 +1,32 @@
+.divLightBlueColor2{background-color:#35aadc; }
+.divBlack{background-color:#5b5959;}
+.divGrey{background-color:#A0A0A0 ;}
+.divGreen{background-color:#ff9800}
+.color16{background-color:white;}
+.roundBorder{border-radius: 25px;}
+.height3{height:600;}
+.padding1{ padding-top: 5px; padding-right: 25px;   padding-bottom: 10px;   padding-left: 25px;}
+.padding2{background-color:#5b5959; padding-top: 1px; padding-right: 1px;   padding-bottom: 1px;   padding-left: 1px;}
+.padding3{background-color:#e83a56; padding-top: 5px; padding-right: 25px;   padding-bottom: 10px;   padding-left: 25px;}
+.padding4{ padding-top: 5px; padding-right: 25px;   padding-bottom: 10px;   padding-left: 25px;}
+.border1{background-color:#5b5959;border: 2px solid #FFFFFF;}
+.width1{width:100px;}
+.floatR{float:right;}
+.indent{text-indent:50px;}
+.width2{width:auto;}
+.width3{width:200;}
+.width4{width:320;}
+.width5{width:180;}
+.height1{height:70;}
+.paddingRight{padding-right:25px;}
+.override{text-decoration:underline !important;}
+.height2{height:450;}
+div.relative {position: relative; left: 40px; right:10px;}
+.relative1{position: relative; left: 40px;right:10px;}		
+.absolute1{position: absolute;    top: 80px;    right: 0;    width: 200px;    height: 100px;}		
+div.padding{padding-top: 5px; padding-right: 25px;   padding-bottom: 10px;   padding-left: 25px;}
+.heading {   position: relative;  display: block;    background:lightblue;      margin: 0 0 45px;}									
+.modal-header, .h4style ,.close {background-color: #5cb85c;     color:white !important;      text-align: center;      font-size: 30px;  }
+.modal-footer {      background-color: #f9f9f9;  }
+.img-radius{border-radius:50%;}
+.divOverflow{overflow-y:scroll;}
